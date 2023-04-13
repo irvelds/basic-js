@@ -23,9 +23,41 @@ const { NotImplementedError } = require('../extensions/index.js');
  *  [1, 1, 1]
  * ]
  */
-function minesweeper(/* matrix */) {
-  throw new NotImplementedError('Not implemented');
-  // remove line with error and write your code here
+function minesweeper(matrix) {
+  let newArray = [];
+  for (let i = 0; i < matrix.length; i++) {
+    newArray.push([])
+    for (j = 0; j < matrix[i].length; j++) {
+      //console.log(`${[i]}${[j]}-----${matrix[i][j]}`);
+      let sum = 0;
+      if ((matrix?.[i - 1]?.[j - 1]) !== undefined) {
+        sum += (matrix[i - 1][j - 1])
+      }
+      if ((matrix?.[i - 1]?.[j]) !== undefined) {
+        sum += (matrix[i - 1][j])
+      }
+      if ((matrix?.[i - 1]?.[j + 1]) !== undefined) {
+        sum += (matrix[i - 1][j + 1])
+      }
+      if ((matrix?.[i]?.[j - 1]) !== undefined) {
+        sum += (matrix[i][j - 1])
+      }
+      if ((matrix?.[i]?.[j + 1]) !== undefined) {
+        sum += (matrix[i][j + 1])
+      }
+      if ((matrix?.[i + 1]?.[j - 1]) !== undefined) {
+        sum += (matrix[i + 1][j - 1])
+      }
+      if ((matrix?.[i + 1]?.[j]) !== undefined) {
+        sum += (matrix[i + 1][j])
+      }
+      if ((matrix?.[i + 1]?.[j + 1]) !== undefined) {
+        sum += (matrix[i + 1][j + 1])
+      }
+      newArray[i].push(sum);
+    }
+  }
+  return newArray
 }
 
 module.exports = {
